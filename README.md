@@ -1,12 +1,13 @@
 Traversing Shadows
 
 BY A-maze-ing Crew
-MEMBERS: AJ Heffernan (2406101), Ollie Chlopek (2407262), Huseyin Hassan (2410698), Xun CHE (2410510), Amelia Baxter (2407844), Bani Kaur (2400903)
+MEMBERS: AJ Heffernan (2406101), Ollie Chlopek (2407262), Huseyin Hassan (2410698), Cherry CHE (2410510), Amelia Baxter (2407844), Bani Kaur (2400903)
 
 OVERVIEW OF GAME
 Think of this like an introduction to your game. What is your game about? What are its key mechanics? What are its main narrative
 ideas and themes? What aesthetic choics did you make. 
-Our game is about a person who is lost in a completely dark, limbo-like maze, forest environment, with only a small light to guide them through the darkness that lights up their immediate area. They are a lone plane crash survivor who has to return to civilization by making it through the dark forest and thus the levels of the game. They will have to avoid enemy wild animals such as wolves and bears, with a mechanic of tools being able to be picked up to fend these off. The most important mechanic is the small flashlight that surrounds the player, as it is the only means to see the environment and hopefully escape. 
+
+Our game is about a person who is lost in a completely dark, limbo-like maze, forest environment, with only a small torch to guide them through the darkness that lights up their immediate area. They are a lone plane crash survivor who has to return to civilization by making it through the dark forest and thus the levels of the game. They will have to avoid enemy wild animals such as wolves and bears, with a mechanic of batteries (extending the torch's range) and guns being able to be picked up to fend these off. The most important mechanic is the small torchlight that surrounds the player, as it is the only means to see the environment and hopefully escape. 
 
 
 INDIVIDUAL CONTRIBUTIONS
@@ -20,7 +21,13 @@ AJ -  I have set up the repository and written the README, along with gathering 
 
 Ollie - I have reorganised and fixed the tile map code, in addition to suggesting the thematic and aesthetic inspiration for our project.
 
+Huseyin - I have implemented the code for the torch mechanic 
+
+Cherry - I have coded the items that can be picked up
+
 Amelia - I have drawn the sprites and texture design 
+
+Bani - 
 
 THEMES
 We are going for a horror, anxious theme, focusing on a person lost in the dark with only a small light for guidance. The structure will be that of a maze, with a claustrophobic, scary environment, with all but the player's immediate area enveloped in darkness.
