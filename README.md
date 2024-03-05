@@ -4,10 +4,8 @@ BY A-maze-ing Crew
 MEMBERS: AJ Heffernan (2406101), Ollie Chlopek (2407262), Huseyin Hassan (2410698), Cherry CHE (2410510), Amelia Baxter (2407844), Bani Kaur (2400903)
 
 OVERVIEW OF GAME
-Think of this like an introduction to your game. What is your game about? What are its key mechanics? What are its main narrative
-ideas and themes? What aesthetic choics did you make. 
 
-Our game is about a person who is lost in a completely dark, limbo-like maze, forest environment, with only a small torch to guide them through the darkness that lights up their immediate area. They are a lone plane crash survivor who has to return to civilization by making it through the dark forest and thus the levels of the game. They will have to avoid enemy wild animals such as wolves and bears, with a mechanic of batteries (extending the torch's range) and guns being able to be picked up to fend these off. The most important mechanic is the small torchlight that surrounds the player, as it is the only means to see the environment and hopefully escape. 
+Our game is about a person who is lost in a completely dark, limbo-like, maze-forest environment, with only a small torch to guide them through the darkness that lights up their immediate area. They are a lone plane crash survivor who has to return to civilization by making it through the dark forest and thus the levels of the game. They will have to avoid enemy wild animals such as wolves and bears, with a mechanic of batteries (extending the torch's range) and guns being able to be picked up to fend these off. The most important mechanic is the small torchlight that surrounds the player, as it is the only means to see the environment and hopefully escape. We  have gone for a dark aesthetic, though done in pixel art, so while it may appear as cutesy pixel art at first glance, it's really a dark horror aesthetic behind this facade.
 
 
 INDIVIDUAL CONTRIBUTIONS
