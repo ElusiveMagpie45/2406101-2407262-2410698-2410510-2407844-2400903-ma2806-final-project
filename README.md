@@ -6,7 +6,7 @@ MEMBERS: AJ Heffernan (2406101), Ollie Chlopek (2407262), Huseyin Hassan (241069
 OVERVIEW OF GAME
 
 Our game is about a person who is lost in a completely dark, limbo-like, maze-forest environment, with only a small torch to guide them through the darkness that lights up their immediate area. They are a lone plane crash survivor who has to return to civilization by making it through the dark forest and thus the levels of the game. They will have to avoid enemy wild animals such as wolves and bears, with a mechanic of batteries (extending the torch's range) and guns being able to be picked up to fend these off. The most important mechanic is the small torchlight that surrounds the player, as it is the only means to see the environment and hopefully escape. We  have gone for a dark aesthetic, though done in pixel art, so while it may appear as cutesy pixel art at first glance, it's really a dark horror aesthetic behind this facade.
-
+Our game is played simply controlled with the WASD control scheme so far, with E or similar hopefully implemented for use on items in the final game.
 
 INDIVIDUAL CONTRIBUTIONS
 
@@ -18,7 +18,7 @@ Huseyin - I have implemented the code for the torch mechanic, lighting the area 
 
 Cherry - I have coded the items that can be picked up, using inspiration I found online for the code, as well as inputting their positions across the map and designing their appearance.
 
-Amelia - I have drawn the sprites and texture design for the player and environment, using a pixel art aesthetic throughout the designs as an art style that serves as a thematic facade. 
+Amelia - I have found our aesthetic inspiration through a Pinterest board of images and have drawn the sprites and texture design for the player and environment, using a pixel art aesthetic throughout the designs as an art style that serves as a thematic facade. 
 
 Bani - I helped with the narrative development and theme of the game, and I will draw and implement the code for the enemies, possibly making use of code from prior lectures, but this will only be relevant in the final version of the game, not the prototype.
 
@@ -39,3 +39,5 @@ AESTHETIC
 Discuss your aesthetic approach and the inspirations you drew from. Upload images
 to your repository and point me to the relevant directory for these, and discuss
 the choices you made.
+
+Our aesthetic is a dark, but pixel-art, one, as though it may appear cutesy pixel art, it is actually a dark horror-esque aesthetic given the dark ennvironment and claustrophobic obstacles layout. Enemies will also have a creepy design when implemented, and we are considering more horror elements i.e. jumpscares. Our main source of inspiration is the game Don't Starve (2013) as suggested by Ollie, as its dark and creepy aesthetic is very much what we are attempting to emulate. Furthermore, images found on Pinterest have inspired our pixel-art style and the forest environment we have portrayed. Such images can be found in the "inspoImages" directory on the repository.
