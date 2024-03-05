@@ -95,6 +95,12 @@ function setup() {
 
 function draw() {
     background(0);
+
+    // Calculate the visibility area around the player
+    let startX = max(0, player.across - floor(spotlightRadius / tileSize));
+    let endX = min(numAcross - 1, player.across + floor(spotlightRadius / tileSize));
+    let startY = max(0, player.down - floor(spotlightRadius / tileSize));
+    let endY = min(numDown - 1, player.down + floor(spotlightRadius / tileSize));
     
     //A loop of tiles for every time that draw function is used
     for (let across = 0; across < numAcross; across++) {
@@ -228,6 +234,7 @@ display() {
 
 }
 
+let spotlightRadius = 150; // how big the radius of the spotlight is
 
 class Tile {
     constructor(texture, x, y, tileSize, tileID) {
@@ -236,11 +243,24 @@ class Tile {
         this.y = y;
         this.tileSize = tileSize;
         this.tileID = tileID;
+        this.visible = false; // Adding visibility
     }
     display() {
+
+        // check if the tile is within the visibility
+        if (dist(player.xPos, player.yPos, this.x + this.tileSize / 2, this.y + this.tileSize / 2) < spotlightRadius) {
+            this.visible = true;
+        } else {
+            this.visible = false;
+        }
+
+        // display the tile only if its visible
+        if (this.visible) {
+        
         //displays texture of instances of NPCs
         noStroke();
         image(this.texture, this.x, this.y, this.tileSize, this.tileSize);
+        }
     }
     debug() {
         //TILE
