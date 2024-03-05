@@ -10,13 +10,13 @@ Our game is about a person who is lost in a completely dark, limbo-like, maze-fo
 
 INDIVIDUAL CONTRIBUTIONS
 
-AJ -  I have set up the repository and written the README, along with gathering the prior code of tile map and player movement from workshops to use as a foundation for our own.
+AJ -  I have set up and managed the repository, written the README, along with gathering the prior code of tile map and player movement from workshops to use as a foundation for our own, and aided in merging code to the main code.
 
-Ollie - I have reorganised and fixed the tile map code, in addition to suggesting the thematic and aesthetic inspiration for our project.
+Ollie - I have reorganised and fixed the tile map code, aided in consolidating code, in addition to suggesting the thematic and aesthetic inspiration for our project.
 
 Huseyin - I have implemented the code for the torch mechanic, lighting the area surrounding the player, using inspiration from a tutorial I found online for guidance. 
 
-Cherry - I have coded the items that can be picked up, using inspiration I found online
+Cherry - I have coded the items that can be picked up, using inspiration I found online for the code, as well as inputting their positions across the map and designing their appearance.
 
 Amelia - I have drawn the sprites and texture design for the player and environment, using a pixel art aesthetic throughout the designs as an art style that serves as a thematic facade. 
 
@@ -27,18 +27,15 @@ THEMES
 We are going for a horror, dark theme, focusing on a person lost in a dark forest with only a small light for guidance. The structure will be that of a maze, with a claustrophobic, scary environment, with all but the player's immediate area enveloped in darkness.
 
 GAME DESIGN
-Discuss the design of your game. What themes does it explore? How are these
-expressed through the mechanics? What mechanics have you incorporated into the
-prototype and how do you plan to develop them in the final project? Are there any
-mechanics you would like to implement but could not at this stage of your project?
-It may be useful to review some of the resources I sent you on game design (in the
-week 17 class notes).
+
+The game explores themes of isolation and survival, with the player being completely alone in an almost completely dark environment save for the small spotlight from their torch. the traversal of the crampt obstacles combined with this mostly dark environment aids that feeling of isolation and the fear desired for a horror-based game. We aim to have the items fully useable, both the gun as a weapon against wild creature enemies and the batteries as a temporary increase to the torch, as well as fully implement the enemies that as of yet are not present at all. The game features the key gameplay loop of "Exploration -> Challenge -> Reward", as the player must explore the environment to find a challenge, whether that be an enemy or a new item, with a reward of survival or utilising said item.
 
 NARRATIVE
 
 The game starts with the player waking up in a creepy, dark forest. They have just survived a plane crash and are miles from proper civilisation. They need to survive this dark forest and make it back to civilsations, fighting off the wild creatures that may attack, while resourcefully making good use out of the batteries and guns that have fallen as debris from the crash. In the final project, it may be that we have an intro with text detailing the situation, and perhaps an outro that details their return to civilisation. We may also add detail to the environment such as debris to make it more immersive to the plane crash setting.
 
 AESTHETIC
+
 Discuss your aesthetic approach and the inspirations you drew from. Upload images
 to your repository and point me to the relevant directory for these, and discuss
 the choices you made.
