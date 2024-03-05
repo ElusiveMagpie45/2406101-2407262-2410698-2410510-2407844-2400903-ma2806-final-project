@@ -9,11 +9,6 @@ Our game is about a person who is lost in a completely dark, limbo-like, maze-fo
 
 
 INDIVIDUAL CONTRIBUTIONS
-Each group member should write their own short section outlining what they contributed
-and their process. Explain what it is you contributed, how you went about it, and
-what your thought process was. There is no length requirement here, but your section
-should be detailed enough that I can easily identify your contributions to the
-project.
 
 AJ -  I have set up the repository and written the README, along with gathering the prior code of tile map and player movement from workshops to use as a foundation for our own.
 
@@ -21,14 +16,15 @@ Ollie - I have reorganised and fixed the tile map code, in addition to suggestin
 
 Huseyin - I have implemented the code for the torch mechanic, lighting the area surrounding the player, using inspiration from a tutorial I found online for guidance. 
 
-Cherry - I have coded the items that can be picked up
+Cherry - I have coded the items that can be picked up, using inspiration I found online
 
 Amelia - I have drawn the sprites and texture design for the player and environment, using a pixel art aesthetic throughout the designs as an art style that serves as a thematic facade. 
 
 Bani - I helped with the narrative development and theme of the game, and I will draw and implement the code for the enemies, possibly making use of code from prior lectures, but this will only be relevant in the final version of the game, not the prototype.
 
 THEMES
-We are going for a horror, anxious theme, focusing on a person lost in the dark with only a small light for guidance. The structure will be that of a maze, with a claustrophobic, scary environment, with all but the player's immediate area enveloped in darkness.
+
+We are going for a horror, dark theme, focusing on a person lost in a dark forest with only a small light for guidance. The structure will be that of a maze, with a claustrophobic, scary environment, with all but the player's immediate area enveloped in darkness.
 
 GAME DESIGN
 Discuss the design of your game. What themes does it explore? How are these
