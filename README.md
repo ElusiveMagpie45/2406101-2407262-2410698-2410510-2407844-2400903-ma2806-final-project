@@ -19,13 +19,13 @@ AJ -  I have set up the repository and written the README, along with gathering 
 
 Ollie - I have reorganised and fixed the tile map code, in addition to suggesting the thematic and aesthetic inspiration for our project.
 
-Huseyin - I have implemented the code for the torch mechanic 
+Huseyin - I have implemented the code for the torch mechanic, lighting the area surrounding the player, using inspiration from a tutorial I found online for guidance. 
 
 Cherry - I have coded the items that can be picked up
 
-Amelia - I have drawn the sprites and texture design 
+Amelia - I have drawn the sprites and texture design for the player and environment, using a pixel art aesthetic throughout the designs as an art style that serves as a thematic facade. 
 
-Bani - I will draw and add the enemies and i also helped with the narrative development and theme of the game. 
+Bani - I helped with the narrative development and theme of the game, and I will draw and implement the code for the enemies, possibly making use of code from prior lectures, but this will only be relevant in the final version of the game, not the prototype.
 
 THEMES
 We are going for a horror, anxious theme, focusing on a person lost in the dark with only a small light for guidance. The structure will be that of a maze, with a claustrophobic, scary environment, with all but the player's immediate area enveloped in darkness.
