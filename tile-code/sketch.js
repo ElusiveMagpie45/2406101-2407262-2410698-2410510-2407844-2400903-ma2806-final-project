@@ -254,4 +254,3 @@ class Tile {
         textAlign(LEFT, TOP);
         text(this.tileID, this.x, this.y);
     }
-}
