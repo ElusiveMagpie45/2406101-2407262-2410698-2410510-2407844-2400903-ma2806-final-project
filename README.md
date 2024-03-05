@@ -35,8 +35,8 @@ It may be useful to review some of the resources I sent you on game design (in t
 week 17 class notes).
 
 NARRATIVE
-Discuss the narrative elements of your game and how you plan to develop these in
-the final project.
+
+The game starts with the player waking up in a creepy, dark forest. They have just survived a plane crash and are miles from proper civilisation. They need to survive this dark forest and make it back to civilsations, fighting off the wild creatures that may attack, while resourcefully making good use out of the batteries and guns that have fallen as debris from the crash. In the final project, it may be that we have an intro with text detailing the situation, and perhaps an outro that details their return to civilisation. We may also add detail to the environment such as debris to make it more immersive to the plane crash setting.
 
 AESTHETIC
 Discuss your aesthetic approach and the inspirations you drew from. Upload images
