@@ -36,8 +36,4 @@ The game starts with the player waking up in a creepy, dark forest. They have ju
 
 AESTHETIC
 
-Discuss your aesthetic approach and the inspirations you drew from. Upload images
-to your repository and point me to the relevant directory for these, and discuss
-the choices you made.
-
 Our aesthetic is a dark, but pixel-art, one, as though it may appear cutesy pixel art, it is actually a dark horror-esque aesthetic given the dark ennvironment and claustrophobic obstacles layout. Enemies will also have a creepy design when implemented, and we are considering more horror elements i.e. jumpscares. Our main source of inspiration is the game Don't Starve (2013) as suggested by Ollie, as its dark and creepy aesthetic is very much what we are attempting to emulate. Furthermore, images found on Pinterest have inspired our pixel-art style and the forest environment we have portrayed. Such images can be found in the "inspoImages" directory on the repository.
