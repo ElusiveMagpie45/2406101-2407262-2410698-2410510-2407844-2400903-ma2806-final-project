@@ -27,7 +27,7 @@ Cherry - I have coded the items that can be picked up
 
 Amelia - I have drawn the sprites and texture design 
 
-Bani - 
+Bani - I will add 2 or 3 different enemies 
 
 THEMES
 We are going for a horror, anxious theme, focusing on a person lost in the dark with only a small light for guidance. The structure will be that of a maze, with a claustrophobic, scary environment, with all but the player's immediate area enveloped in darkness.
