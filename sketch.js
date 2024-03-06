@@ -56,6 +56,8 @@ let tileRules = [
     let playerSprite;
     let playerSpeed = 5;
     let playerSize = tileSize;
+    let gunSprite;
+    let batterySprite;
 
 function preload() {
     //loads tile textures
@@ -64,6 +66,10 @@ function preload() {
 
     //loads player image
     playerSprite = loadImage("survivor.png")
+    gunSprite=loadImage("gun.png")
+    batterySprite=loadImage("battery.png") 
+
+
 }
 
 function setup() {
@@ -81,27 +87,45 @@ function setup() {
             //Texture for Tile
             let textureNum = graphicMap[down][across];
 
-            tilemap[across][down] = new Tile(textures[graphicMap[down][across]], x, y, tileSize, tileID);
+            let item=null; //init item
+            if(random() < 0.05 && textureNum !== 1){
+                item = random() < 0.5 ? gunSprite : batterySprite;
+            }
+
+            tilemap[across][down] = new Tile(textures[graphicMap[down][across]], x, y, tileSize, tileID,item);
 
             tileID++;
         }
     }
+  
 
     //console.log(tilemap[4][6].tileID)
     //console.log(tilemap[4][6].x / tileSize);
 
-    player = new Player(playerSprite, 0, 4, tileSize, playerSpeed, tileSize, tileRules)
+    player = new Player(playerSprite, 0, 4, tileSize, playerSpeed, tileSize, tileRules,batterySprite,gunSprite)
 }
 
 function draw() {
     background(0);
+    player.display();
+    player.move();
+    player.updateBattery(); //update battery
 
-    // Calculate the visibility area around the player
-    let startX = max(0, player.across - floor(spotlightRadius / tileSize));
-    let endX = min(numAcross - 1, player.across + floor(spotlightRadius / tileSize));
-    let startY = max(0, player.down - floor(spotlightRadius / tileSize));
-    let endY = min(numDown - 1, player.down + floor(spotlightRadius / tileSize));
-    
+  // Calculate the visibility area around the player
+  let startX = max(0, player.across - floor(spotlightRadius / tileSize));
+  let endX = min(numAcross - 1, player.across + floor(spotlightRadius / tileSize));
+  let startY = max(0, player.down - floor(spotlightRadius / tileSize));
+  let endY = min(numDown - 1, player.down + floor(spotlightRadius / tileSize));
+  
+    for (let across = 0; across < numAcross; across++) {
+        for (let down = 0; down < numDown; down++) {
+            let currentTile = tilemap[across][down];
+            if (currentTile.item && dist(player.xPos, player.yPos, currentTile.x, currentTile.y) < tileSize) {
+                player.pickUpItem(currentTile.item);
+                currentTile.item = null; // 道具被拾取后从地图中移除
+            }
+        }
+    }
     //A loop of tiles for every time that draw function is used
     for (let across = 0; across < numAcross; across++) {
         for (let down = 0; down < numDown; down++) {
@@ -117,16 +141,25 @@ function draw() {
 
 function keyPressed() {
     player.setDirection();
+    
 }
 
 class Player {
-    constructor(sprite, startAcross, startDown, size, speed, tileSize, tileRules) {
+    constructor(sprite, startAcross, startDown, size, speed, tileSize, tileRules,gunSprite,batterySprite) {
         //Sprite to key object
         this.sprite = sprite;
 
         //Starting tile info storage
         this.across = startAcross;
         this.down = startDown;
+        //items props
+        this.hasGun = false;
+        this.hasBattery = false;
+        this.gunSprite = gunSprite;
+        this.batterySprite = batterySprite;
+        this.gunUsed = false;
+        this.batteryUsed = false;
+        this.batteryTime = 0;
 
         //tile co-ords into pixel co-ords
         this.xPos = this.across * tileSize;
@@ -151,6 +184,37 @@ class Player {
         this.tx = this.xPos;
         this.ty = this.yPos;
 
+    } pickUpItem(item) {
+        if (item === this.gunSprite) {
+            this.hasGun = true;
+        } else if (item === this.batterySprite) {
+            this.hasBattery = true;
+        }
+    }
+
+    // use gun
+    useGun() {
+        if (this.hasGun && !this.gunUsed) {
+            // kill 
+            this.gunUsed = true;
+        }
+    }
+
+    // use battery makes lightly
+    useBattery() {
+        if (this.hasBattery && !this.batteryUsed) {
+            // 10s
+            this.batteryUsed = true;
+            this.batteryTime = 10 * 60; //  
+        }
+    }
+    updateBattery() {
+        if (this.batteryUsed && this.batteryTime > 0) {
+            this.batteryTime--;
+            if (this.batteryTime === 0) {
+                this.batteryUsed = false;
+            }
+        }
     }
     //WASD and the directions
     setDirection() {
@@ -233,33 +297,33 @@ display() {
 }
 
 }
-
 let spotlightRadius = 150; // how big the radius of the spotlight is
 
+
 class Tile {
-    constructor(texture, x, y, tileSize, tileID) {
+    constructor(texture, x, y, tileSize, tileID,item=null) {
         this.texture = texture;
         this.x = x;
         this.y = y;
         this.tileSize = tileSize;
         this.tileID = tileID;
-        this.visible = false; // Adding visibility
+        this.visible=false;//Adding visibility
+        this.item=item;//to save  gun&battery
     }
     display() {
-
-        // check if the tile is within the visibility
-        if (dist(player.xPos, player.yPos, this.x + this.tileSize / 2, this.y + this.tileSize / 2) < spotlightRadius) {
+          // check if the tile is within the visibility
+          if (dist(player.xPos, player.yPos, this.x + this.tileSize / 2, this.y + this.tileSize / 2) < spotlightRadius) {
             this.visible = true;
         } else {
             this.visible = false;
         }
-
-        // display the tile only if its visible
-        if (this.visible) {
-        
         //displays texture of instances of NPCs
+        if(this.visible){
         noStroke();
-        image(this.texture, this.x, this.y, this.tileSize, this.tileSize);
+        image(this.texture, this.x, this.y, this.tileSize, this.tileSize);}
+        //if has items
+        if (this.item) {
+            image(this.item, this.x, this.y, this.tileSize, this.tileSize);
         }
     }
     debug() {
