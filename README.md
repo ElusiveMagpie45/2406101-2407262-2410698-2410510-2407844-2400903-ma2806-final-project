@@ -20,7 +20,7 @@ Cherry - I have coded the items that can be picked up, using inspiration I found
 
 Amelia - I have found our aesthetic inspiration through a Pinterest board of images and have drawn the sprites and texture design for the player and environment, using a pixel art aesthetic throughout the designs as an art style that serves as a thematic facade. 
 
-Bani - I helped with the narrative development and theme of the game, and I will draw and implement the code for the enemies, possibly making use of code from prior lectures, but this will only be relevant in the final version of the game, not the prototype.
+Bani - I helped with the narrative development and theme of the game, and I have implemented the code for the enemies, possibly making use of code from prior lectures, i am struggling to display the enemy right now, I am going to figure this out soon and add more enemies such as wolves and bear. I also need to add a gun mechanic where a bullet shot will cause the enemy to dissappear. 
 
 THEMES
 
