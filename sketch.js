@@ -461,3 +461,73 @@ class Tile {
         text(this.tileID, this.x, this.y);
     }
 }
+
+
+
+
+
+//code for the start menu
+//let MENU = 0
+//let img2;
+
+//function preload() {
+ // img2 = loadImage('IMG_1716.PNG');
+//}
+
+//function setup() {
+ // createCanvas(1000, 1000);
+//}
+
+//function draw() {
+//  print(mouseX, mouseY)
+ // background(0);
+ // fill(0, 255, 0, 50);
+ // rect(50, 50, 200, 75);
+  //fill(255, 0, 255, 50);
+  //rect(50, 200, 200, 75);
+ // textSize(50)
+ // fill(255);
+  //text('START', 70, 106);
+  
+  //textSize(26);
+ // text('INSTRUCTIONS', 52, 248);
+ // image(img2, 250, 0, 800, 800);
+
+  //if (MENU == 1) {
+    
+   // fill(0)
+    //textSize(20)
+   // text('Right Click to return to MENU', 525, 30)
+   // if (mouseButton == RIGHT) {
+   //   MENU = 0
+  //  }
+  //} // START GAME
+ // if (MENU == 2) {
+//    background(0)
+ //   textSize(20)
+//    text('Right Click to return to MENU', 525, 30)
+//    textSize(30)
+ //   text('-use WASD to move the character', 50, 150)
+//    text('-navigate the maze', 50, 200)
+ //   text('-pick up batteries to expand your view', 50, 240)
+ //   text('-defeat enemies', 50, 290)
+ //   if (mouseButton == RIGHT) {
+ //     MENU = 0
+ //   }
+//  } // INSTRUCTIONS
+
+//}
+
+//function mouseClicked() {
+//  if (MENU == 0) {
+//    if (mouseX < 200 && mouseX > 50) {
+//      if (mouseY < 125 && mouseY > 50) {
+  //      MENU = 1
+//      }
+ //     if (mouseY < 275 && mouseY > 200) {
+//        MENU = 2
+ //     }
+      
+ //   }
+//  }
+//}
