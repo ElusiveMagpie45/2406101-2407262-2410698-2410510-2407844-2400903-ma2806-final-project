@@ -122,7 +122,7 @@ function draw() {
             let currentTile = tilemap[across][down];
             if (currentTile.item && dist(player.xPos, player.yPos, currentTile.x, currentTile.y) < tileSize) {
                 player.pickUpItem(currentTile.item);
-                currentTile.item = null; // 道具被拾取后从地图中移除
+                currentTile.item = null; // items are removed from the map after being picked up
             }
         }
     }
