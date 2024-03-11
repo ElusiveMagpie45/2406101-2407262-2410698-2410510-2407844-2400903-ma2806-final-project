@@ -3,6 +3,8 @@ let numDown = 20;
 let numAcross = 20;
 let tileSize = 50;
 let textures = [];
+let enemies = [];
+let numEnemies = 5; 
 
 
 let graphicMap = [
@@ -58,6 +60,9 @@ let tileRules = [
     let playerSize = tileSize;
     let gunSprite;
     let batterySprite;
+    let enemySprite; 
+    let enemySpeed; 
+
 
 function preload() {
     //loads tile textures
@@ -68,15 +73,15 @@ function preload() {
     playerSprite = loadImage("survivor.png")
     gunSprite=loadImage("gun.png")
     batterySprite=loadImage("battery.png") 
+    enemySprite = loadImage("enemySprite.gif.png")
 
 
 }
-
 function setup() {
     createCanvas(1000, 1000);
 
     let tileID = 0; //this is the ID for the first tile
-    
+
     //creates the other tiles
     for (let across = 0; across < numAcross; across++) {
         tilemap[across] = [];
@@ -99,10 +104,127 @@ function setup() {
     }
   
 
+    // Creating player
+    player = new Player(playerSprite, 0, 4, tileSize, playerSpeed, tileSize, tileRules,batterySprite,gunSprite)
+
+    // Creating enemies
+    for (let i = 0; i < numEnemies; i++) {
+        let enemyX = random(width);
+        let enemyY = random(height);
+        enemies.push(new Enemy(enemyX, enemyY, tileSize, tileSize, enemySprite, enemySpeed));
+    }
+}
+
+
     //console.log(tilemap[4][6].tileID)
     //console.log(tilemap[4][6].x / tileSize);
 
-    player = new Player(playerSprite, 0, 4, tileSize, playerSpeed, tileSize, tileRules,batterySprite,gunSprite)
+
+class Enemy {
+    constructor(sprite, startAcross, startDown, size, speed, tileSize, tileRules) {
+      
+        this.sprite = sprite;
+
+     
+        this.across = startAcross;
+        this.down = startDown;
+
+     
+        this.xPos = this.across * tileSize;
+        this.yPos = this.down * tileSize;
+
+      
+        this.size = size;
+        this.speed = speed;
+
+  
+        this.tileRules = tileRules;
+        this.tileSize = tileSize;
+
+     
+        this.dirX = 0;
+        this.dirY = 0;
+
+ 
+        this.isMoving = false;
+
+        this.tx = this.xPos;
+        this.ty = this.yPos;
+    }
+
+    // Set direction of the enemy
+    setDirection() {
+        if (!this.isMoving) {
+            // Randomize movement direction
+            let direction = floor(random(4));
+            switch (direction) {
+                case 0: // UP
+                    this.dirX = 0;
+                    this.dirY = -1;
+                    break;
+                case 1: // DOWN
+                    this.dirX = 0;
+                    this.dirY = 1;
+                    break;
+                case 2: // LEFT
+                    this.dirX = -1;
+                    this.dirY = 0;
+                    break;
+                case 3: // RIGHT
+                    this.dirX = 1;
+                    this.dirY = 0;
+                    break;
+            }
+            // Check the target tile
+            this.checkTargetTile();
+        }
+    }
+
+    // Check target tile for the enemy
+    checkTargetTile() {
+        // Obtain the tile that the enemy is standing on
+        this.across = Math.floor(this.xPos / this.tileSize);
+        this.down = Math.floor(this.yPos / this.tileSize);
+
+        // Calculate the coordinates of the desired tile
+        let nextTileHorizontal = this.across + this.dirX;
+        let nextTileVertical = this.down + this.dirY;
+
+        // Check if the next tile is within the map and if it's a walkable tile
+        if (
+            nextTileHorizontal >= 0 &&
+            nextTileHorizontal < numAcross &&
+            nextTileVertical >= 0 &&
+            nextTileVertical < numDown &&
+            this.tileRules[nextTileVertical][nextTileHorizontal] != 1
+        ) {
+            // Update the target tile coordinates
+            this.tx = nextTileHorizontal * this.tileSize;
+            this.ty = nextTileVertical * this.tileSize;
+            // Set the enemy to moving
+            this.isMoving = true;
+        }
+    }
+
+    // Move the enemy
+    move() {
+        if (this.isMoving) {
+            this.xPos += this.speed * this.dirX;
+            this.yPos += this.speed * this.dirY;
+
+            if (this.xPos === this.tx && this.yPos === this.ty) {
+                this.isMoving = false;
+                this.dirX = 0;
+                this.dirY = 0;
+            }
+        }
+    }
+
+    // Display the enemy
+    display() {
+        imageMode(CORNER);
+        image(this.sprite, this.xPos, this.yPos, this.size, this.size);
+    }
 }
 
 function draw() {
