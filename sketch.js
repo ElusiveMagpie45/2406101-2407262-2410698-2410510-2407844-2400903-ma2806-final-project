@@ -5,6 +5,7 @@ let tileSize = 50;
 let textures = [];
 let enemies = [];
 let numEnemies = 5; 
+let music;
 
 
 let graphicMap = [
@@ -79,7 +80,10 @@ function preload() {
 }
 function setup() {
     createCanvas(1000, 1000);
-
+    
+    //loads ambient music
+    music = loadSound("ambientMusic");
+    
     let tileID = 0; //this is the ID for the first tile
 
     //creates the other tiles
@@ -229,6 +233,10 @@ class Enemy {
 
 function draw() {
     background(0);
+    
+    //plays ambient music
+    music.play();
+    
     player.display();
     player.move();
     player.updateBattery(); //update battery
