@@ -437,22 +437,26 @@ class Tile {
         this.y = y;
         this.tileSize = tileSize;
         this.tileID = tileID;
-        this.visible=false;//Adding visibility
+        this.visible = false;//Adding visibility
         this.item=item;//to save  gun&battery
     }
     display() {
-          // check if the tile is within the visibility
-          if (dist(player.xPos, player.yPos, this.x + this.tileSize / 2, this.y + this.tileSize / 2) < spotlightRadius) {
+        // check if the tile is within the visibility
+        if (dist(player.xPos, player.yPos, this.x + this.tileSize / 2, this.y + this.tileSize / 2) < spotlightRadius) {
             this.visible = true;
         } else {
             this.visible = false;
         }
-        //displays texture of instances of NPCs
-        if(this.visible){
-        noStroke();
-        image(this.texture, this.x, this.y, this.tileSize, this.tileSize);}
-        //if has items
-        if (this.item) {
+
+        
+        if (this.visible) {
+            noStroke();
+            image(this.texture, this.x, this.y, this.tileSize, this.tileSize);
+        }
+
+        // check if the item is within the visibility
+        if (this.item && this.visible) {
+            // only displaying the item if it's within the spotlight area
             image(this.item, this.x, this.y, this.tileSize, this.tileSize);
         }
     }
