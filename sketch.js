@@ -68,7 +68,7 @@ let tileRules = [
 function preload() {
     //loads tile textures
     textures[0] = loadImage("plain.png")
-    textures[1] = loadImage("obstacle.png")
+    textures[1] = loadImage("tree.png")
 
     //loads player image
     playerSprite = loadImage("survivor.png")
