@@ -84,6 +84,9 @@ function preload() {
 }
 function setup() {
     createCanvas(1000, 1000);
+
+    //plays ambient music
+    music.play();
     
     let tileID = 0; //this is the ID for the first tile
 
@@ -234,9 +237,6 @@ class Enemy {
 
 function draw() {
     background(0);
-    
-    //plays ambient music
-    music.play();
     
     player.display();
     player.move();
