@@ -77,7 +77,7 @@ function preload() {
     enemySprite = loadImage("enemySprite.gif.png")
 
     //loads ambient music
-    music = loadSound("ambientMusic");
+    music = loadSound("ambientMusic")
 
 
 }
