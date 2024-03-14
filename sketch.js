@@ -272,6 +272,9 @@ function draw() {
 
 function keyPressed() {
     player.setDirection();
+}
+
+function mousePressed() {
     music.resume();
 }
 
