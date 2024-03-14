@@ -272,7 +272,7 @@ function draw() {
 
 function keyPressed() {
     player.setDirection();
-    
+    music.resume();
 }
 
 class Player {
