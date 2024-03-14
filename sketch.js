@@ -532,6 +532,7 @@ class Tile {
 
 function mouseClicked() {
     userStartAudio();
+    music.loop();
     
 //  if (MENU == 0) {
 //    if (mouseX < 200 && mouseX > 50) {
