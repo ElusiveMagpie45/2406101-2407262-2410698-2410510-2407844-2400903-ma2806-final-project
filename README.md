@@ -14,7 +14,7 @@ AJ -  I have set up and managed the repository, written the README, along with g
 
 Ollie - I have reorganised and fixed the tile map code, aided in consolidating code, in addition to suggesting the thematic and aesthetic inspiration for our project.
 
-Huseyin - I have implemented the code for the torch mechanic, lighting the area surrounding the player, using inspiration from a tutorial I found online for guidance. 
+Huseyin - I have implemented the code for the torch mechanic, lighting the area surrounding the player, using inspiration from a tutorial I found online for guidance. I have also made it so that the powerups are not visible without being in the spotlight.
 
 Cherry - I have coded the items that can be picked up, using inspiration I found online for the code, as well as inputting their positions across the map and designing their appearance.
 
