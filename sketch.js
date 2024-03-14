@@ -274,10 +274,6 @@ function keyPressed() {
     player.setDirection();
 }
 
-function mousePressed() {
-    music.resume();
-}
-
 class Player {
     constructor(sprite, startAcross, startDown, size, speed, tileSize, tileRules,gunSprite,batterySprite) {
         //Sprite to key object
