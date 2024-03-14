@@ -86,7 +86,6 @@ function setup() {
     createCanvas(1000, 1000);
 
     //plays ambient music
-    music.play();
     music.loop();
     
     let tileID = 0; //this is the ID for the first tile
