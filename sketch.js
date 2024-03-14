@@ -530,7 +530,9 @@ class Tile {
 
 //}
 
-//function mouseClicked() {
+function mouseClicked() {
+    userStartAudio();
+    
 //  if (MENU == 0) {
 //    if (mouseX < 200 && mouseX > 50) {
 //      if (mouseY < 125 && mouseY > 50) {
