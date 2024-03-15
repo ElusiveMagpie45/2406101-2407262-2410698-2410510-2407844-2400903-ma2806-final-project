@@ -9,7 +9,6 @@ let music;
 let sfx;
 let torchClick = false;
 
-
 let graphicMap = [
     [5, 3, 3, 3, 5, 3, 5, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 5],
     [5, 0, 0, 0, 5, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5],
