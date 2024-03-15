@@ -328,6 +328,8 @@ class Player {
 pickUpItem(item) {
     if (item === this.batterySprite) {
         this.hasBattery = true;
+        //play torch sound
+        torchClick = true;
         // Apply battery effect
         this.applyBatteryEffect();
         
@@ -367,8 +369,7 @@ pickUpItem(item) {
     useBattery() {
         if (this.hasBattery && !this.batteryUsed) {
             // 10s
-            this.batteryUsed = true;
-            torchClick = true;
+            this.batteryUsed = true
             this.batteryTime = 10 * 60; //  
         }
     }
