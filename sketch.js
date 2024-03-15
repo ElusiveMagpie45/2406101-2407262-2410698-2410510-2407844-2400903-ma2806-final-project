@@ -7,7 +7,7 @@ let enemies = [];
 let numEnemies = 5; 
 let music;
 let sfx;
-let torchClick == false;
+let torchClick = false;
 
 
 let graphicMap = [
