@@ -77,8 +77,8 @@ function preload() {
 
     //loads player image
     playerSprite = loadImage("survivor.png")
-    gunSprite=loadImage("gun.png")
-    batterySprite=loadImage("newBattery.png") 
+    gunSprite=loadImage("newBattery.png")
+    batterySprite=loadImage("gun.png") 
     enemySprite = loadImage("enemySprite.gif.png")
 
     //loads ambient music
@@ -244,7 +244,7 @@ function draw() {
     
     player.display();
     player.move();
-    player.updateBattery(); //update battery
+    player.updateBatteryEffect(); //update battery
 
   // Calculate the visibility area around the player
   let startX = max(0, player.across - floor(spotlightRadius / tileSize));
@@ -318,14 +318,40 @@ class Player {
         this.tx = this.xPos;
         this.ty = this.yPos;
 
-    } pickUpItem(item) {
-        if (item === this.gunSprite) {
-            this.hasGun = true;
-        } else if (item === this.batterySprite) {
-            this.hasBattery = true;
-        }
+        this.batteryEffectTimer = 0;
+        this.originalSpotlightRadius = spotlightRadius;
+        this.spotlightExpanding = false;
+
+    } 
+pickUpItem(item) {
+    if (item === this.batterySprite) {
+        this.hasBattery = true;
+        // Apply battery effect
+        this.applyBatteryEffect();
+    } else if (item === this.gunSprite) {
+        this.hasGun = true;
+        
+    }
+}
+
+
+    applyBatteryEffect() {
+        // Set the spotlight radius to see whole map
+        spotlightRadius = 10000;
+        this.spotlightExpanding = true;
+        this.batteryEffectTimer = 5 * 60; // 5 seconds
     }
 
+    updateBatteryEffect() {
+        if (this.spotlightExpanding && this.batteryEffectTimer > 0) {
+            this.batteryEffectTimer--;
+            if (this.batteryEffectTimer === 0) {
+                // Reset spotlight radius and effect
+                spotlightRadius = this.originalSpotlightRadius;
+                this.spotlightExpanding = false;
+            }
+        }
+    }
     // use gun
     useGun() {
         if (this.hasGun && !this.gunUsed) {
