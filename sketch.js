@@ -7,6 +7,7 @@ let enemies = [];
 let numEnemies = 5; 
 let music;
 let sfx;
+let torchClick == false;
 
 
 let graphicMap = [
@@ -368,6 +369,7 @@ pickUpItem(item) {
         if (this.hasBattery && !this.batteryUsed) {
             // 10s
             this.batteryUsed = true;
+            torchClick == true;
             this.batteryTime = 10 * 60; //  
         }
     }
@@ -565,7 +567,7 @@ class Tile {
 
 function mouseClicked() {
     userStartAudio();
-    if (batteryUsed == true) {
+    if (torchClick == true) {
         sfx.play();
     }
     
