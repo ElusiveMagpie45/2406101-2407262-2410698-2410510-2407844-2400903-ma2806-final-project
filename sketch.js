@@ -83,6 +83,7 @@ function preload() {
 
     //loads ambient music
     music = loadSound("ambientMusic.wav")
+    torchsfx = loadSound("flashlight.mp3")
 
 
 }
@@ -328,6 +329,9 @@ pickUpItem(item) {
         this.hasBattery = true;
         // Apply battery effect
         this.applyBatteryEffect();
+
+        play.torchsfx();
+        
     } else if (item === this.gunSprite) {
         this.hasGun = true;
         
