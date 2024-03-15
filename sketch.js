@@ -6,7 +6,7 @@ let textures = [];
 let enemies = [];
 let numEnemies = 5; 
 let music;
-let torchsfx;
+let sfx;
 
 
 let graphicMap = [
@@ -84,7 +84,7 @@ function preload() {
 
     //loads ambient music
     music = loadSound("ambientMusic.wav")
-    torchsfx = loadSound("flashlight.mp3")
+    sfx = loadSound("flashlight.mp3")
 
 
 }
@@ -330,8 +330,6 @@ pickUpItem(item) {
         this.hasBattery = true;
         // Apply battery effect
         this.applyBatteryEffect();
-
-        torchsfx.play();
         
     } else if (item === this.gunSprite) {
         this.hasGun = true;
@@ -567,6 +565,9 @@ class Tile {
 
 function mouseClicked() {
     userStartAudio();
+    if (batteryUsed == true) {
+        sfx.play();
+    }
     
 //  if (MENU == 0) {
 //    if (mouseX < 200 && mouseX > 50) {
