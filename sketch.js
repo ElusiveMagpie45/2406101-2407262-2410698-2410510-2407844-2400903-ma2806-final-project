@@ -330,7 +330,7 @@ pickUpItem(item) {
         // Apply battery effect
         this.applyBatteryEffect();
 
-        play.torchsfx();
+        torchsfx.play();
         
     } else if (item === this.gunSprite) {
         this.hasGun = true;
