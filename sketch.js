@@ -79,8 +79,8 @@ function preload() {
 
     //loads player image
     playerSprite = loadImage("survivor.png")
-    gunSprite=loadImage("newBattery.png")
-    batterySprite=loadImage("gun.png") 
+    gunSprite = loadImage("newBattery.png")
+    batterySprite = loadImage("gun.png") 
     enemySprite = loadImage("enemySprite.gif.png")
 
     //loads ambient music
@@ -369,7 +369,7 @@ pickUpItem(item) {
         if (this.hasBattery && !this.batteryUsed) {
             // 10s
             this.batteryUsed = true;
-            torchClick == true;
+            torchClick = true;
             this.batteryTime = 10 * 60; //  
         }
     }
@@ -567,7 +567,7 @@ class Tile {
 
 function mouseClicked() {
     userStartAudio();
-    if (torchClick == true) {
+    if (torchClick = true) {
         sfx.play();
     }
     
