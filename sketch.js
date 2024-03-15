@@ -6,6 +6,7 @@ let textures = [];
 let enemies = [];
 let numEnemies = 5; 
 let music;
+let torchsfx;
 
 
 let graphicMap = [
