@@ -565,14 +565,17 @@ class Tile {
 
 //}
 
-function mouseClicked() {
-    sfx.stop();
-    userStartAudio();
-    sfx.stop();
-    if (torchClick = true) {
-        sfx.play();
-    }
-    
+//function mouseClicked() {
+
+//    Code for torch sfx if i ever get it working
+//    sfx.stop();
+//    userStartAudio();
+//    sfx.stop();
+//    if (torchClick = true) {
+//        sfx.play();
+//    }
+
+
 //  if (MENU == 0) {
 //    if (mouseX < 200 && mouseX > 50) {
 //      if (mouseY < 125 && mouseY > 50) {
