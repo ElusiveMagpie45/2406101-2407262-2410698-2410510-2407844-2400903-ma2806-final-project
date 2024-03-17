@@ -568,6 +568,9 @@ class Tile {
 function mouseClicked() {
     userStartAudio();
     sfx.stop();
+    if (torchClick = true) {
+        sfx.play();
+    }
     
 //  if (MENU == 0) {
 //    if (mouseX < 200 && mouseX > 50) {
