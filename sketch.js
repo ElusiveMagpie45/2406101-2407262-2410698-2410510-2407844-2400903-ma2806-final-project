@@ -9,6 +9,10 @@ let music;
 let sfx;
 let torchClick = false;
 
+let bullets = [];
+
+
+
 
 let graphicMap = [
     [5, 3, 3, 3, 5, 3, 5, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 5],
@@ -139,8 +143,43 @@ function setup() {
     //console.log(tilemap[4][6].tileID)
     //console.log(tilemap[4][6].x / tileSize);
 
+    class Bullet {
+        constructor(x, y, direction) {
+            this.x = x;
+            this.y = y;
+            this.direction = direction; // Direction of the bullet
+            this.speed = 10; // Speed of the bullet
+            this.bulletImage = loadImage("bullet.png"); // Loading the bullet image
+        }
+    
+        // Updating the bullet position
+        update() {
+            switch (this.direction) {
+                case "left":
+                    this.x -= this.speed;
+                    break;
+                case "right":
+                    this.x += this.speed;
+                    break;
+                case "up":
+                    this.y -= this.speed;
+                    break;
+                case "down":
+                    this.y += this.speed;
+                    break;
+            }
+        }
+    
+        
+        display() {
+            image(this.bulletImage, this.x, this.y);
+        }
+    }
 
-class Enemy {
+
+
+
+    class Enemy {
     constructor(sprite, startAcross, startDown, size, speed, tileSize, tileRules) {
       
         this.sprite = sprite;
@@ -250,6 +289,15 @@ class Enemy {
 function draw() {
     background(0);
     
+    for (let i = bullets.length - 1; i >= 0; i--) {
+        bullets[i].update();
+        bullets[i].display();
+        // Remove bullets that go off-screen
+        if (bullets[i].x < 0 || bullets[i].x > width || bullets[i].y < 0 || bullets[i].y > height) {
+            bullets.splice(i, 1);
+        }
+    }
+    
     player.display();
     player.move();
     player.updateBatteryEffect(); //update battery
@@ -280,11 +328,28 @@ function draw() {
     }
     player.display();
     player.move();
+
+
 }
 
 function keyPressed() {
     player.setDirection();
-}
+        // Check arrow key presses
+        if (keyCode === LEFT_ARROW) {
+            // Create bullet moving left
+            bullets.push(new Bullet(player.xPos, player.yPos + playerSize / 2, "left"));
+        } else if (keyCode === RIGHT_ARROW) {
+            // Create bullet moving right
+            bullets.push(new Bullet(player.xPos + playerSize, player.yPos + playerSize / 2, "right"));
+        } else if (keyCode === UP_ARROW) {
+            // Create bullet moving up
+            bullets.push(new Bullet(player.xPos + playerSize / 2, player.yPos, "up"));
+        } else if (keyCode === DOWN_ARROW) {
+            // Create bullet moving down
+            bullets.push(new Bullet(player.xPos + playerSize / 2, player.yPos + playerSize, "down"));
+        }
+    }
+
 
 class Player {
     constructor(sprite, startAcross, startDown, size, speed, tileSize, tileRules,gunSprite,batterySprite) {
