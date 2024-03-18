@@ -78,8 +78,8 @@ function preload() {
 
     //loads player image
     playerSprite = loadImage("survivor.png")
-    batterySprite = loadImage("newBattery.png")
-    gunSprite = loadImage("gun.png") 
+    gunSprite = loadImage("newBattery.png")
+    batterySprite = loadImage("gun.png") 
     enemySprite = loadImage("enemySprite.gif.png")
 
     //loads ambient music
