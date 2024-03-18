@@ -82,6 +82,7 @@ function preload() {
     batterySprite = loadImage("gun.png") 
     enemySprite = loadImage("enemySprite.gif.png")
 
+    
     //loads ambient music
     music = loadSound("ambientMusic.wav")
     sfx = loadSound("flashlight.mp3")
