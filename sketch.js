@@ -287,6 +287,14 @@ function setup() {
 function draw() {
     background(0);
     
+    // Loop through tiles to display them
+    for (let across = 0; across < numAcross; across++) {
+        for (let down = 0; down < numDown; down++) {
+            tilemap[across][down].display(); // Display each tile
+        }
+    }
+    
+    // Update and display bullets
     for (let i = bullets.length - 1; i >= 0; i--) {
         bullets[i].update();
         bullets[i].display();
@@ -296,16 +304,18 @@ function draw() {
         }
     }
     
+    
     player.display();
     player.move();
     player.updateBatteryEffect(); //update battery
 
-  // Calculate the visibility area around the player
-  let startX = max(0, player.across - floor(spotlightRadius / tileSize));
-  let endX = min(numAcross - 1, player.across + floor(spotlightRadius / tileSize));
-  let startY = max(0, player.down - floor(spotlightRadius / tileSize));
-  let endY = min(numDown - 1, player.down + floor(spotlightRadius / tileSize));
+    // Calculate the visibility area around the player
+    let startX = max(0, player.across - floor(spotlightRadius / tileSize));
+    let endX = min(numAcross - 1, player.across + floor(spotlightRadius / tileSize));
+    let startY = max(0, player.down - floor(spotlightRadius / tileSize));
+    let endY = min(numDown - 1, player.down + floor(spotlightRadius / tileSize));
   
+    // A loop of tiles for everytime the draw function is used
     for (let across = 0; across < numAcross; across++) {
         for (let down = 0; down < numDown; down++) {
             let currentTile = tilemap[across][down];
@@ -315,20 +325,9 @@ function draw() {
             }
         }
     }
-    //A loop of tiles for every time that draw function is used
-    for (let across = 0; across < numAcross; across++) {
-        for (let down = 0; down < numDown; down++) {
-            
-            //tilemap[across][down].debug(); //runs a debug on every tile
-            tilemap[across][down].display(); //runs a display for every tile
-
-        }
-    }
-    player.display();
-    player.move();
-
-
 }
+
+
 
 function keyPressed() {
     player.setDirection();
@@ -644,8 +643,9 @@ class Tile {
 //}
 
 //function mouseClicked() {
-//Starts audio when mouseClicked
+//starts music on mouse click
     userStartAudio();
+
 //  if (MENU == 0) {
 //    if (mouseX < 200 && mouseX > 50) {
 //      if (mouseY < 125 && mouseY > 50) {
