@@ -119,6 +119,11 @@ function setup() {
                 item = random() < 0.5 ? gunSprite : batterySprite;
             }
 
+            let playerHide=null; //init playerHide to hide player in circumstances
+            if(textureNum == 9){
+                playerHide();
+            }
+
             tilemap[across][down] = new Tile(textures[graphicMap[down][across]], x, y, tileSize, tileID,item);
 
             tileID++;
@@ -322,6 +327,11 @@ function draw() {
             if (currentTile.item && dist(player.xPos, player.yPos, currentTile.x, currentTile.y) < tileSize) {
                 player.pickUpItem(currentTile.item);
                 currentTile.item = null; // items are removed from the map after being picked up
+            }
+            if (currentTile.playerHide && dist(player.xPos, player.yPos, currentTile.x, currentTile.y) < tileSize) {
+                playerSprite.hide();
+            }else{
+                playerSprite.display();
             }
         }
     }
