@@ -6,8 +6,6 @@ let textures = [];
 let enemies = [];
 let numEnemies = 5; 
 let music;
-let sfx;
-let torchClick = false;
 
 let bullets = [];
 
@@ -409,8 +407,6 @@ class Player {
 pickUpItem(item) {
     if (item === this.batterySprite) {
         this.hasBattery = true;
-        //play torch sound
-        torchClick = true;
         // Apply battery effect
         this.applyBatteryEffect();
         
@@ -648,13 +644,8 @@ class Tile {
 //}
 
 //function mouseClicked() {
-//    Code for torch sfx if i ever get it working
-//    sfx.stop();
-//    userStartAudio();
-//    sfx.stop();
-//    if (torchClick = true) {
-//        sfx.play();
-//    }
+//Starts audio when mouseClicked
+    userStartAudio();
 //  if (MENU == 0) {
 //    if (mouseX < 200 && mouseX > 50) {
 //      if (mouseY < 125 && mouseY > 50) {
