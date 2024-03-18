@@ -12,6 +12,8 @@ let torchClick = false;
 let bullets = [];
 
 
+
+
 let graphicMap = [
     [5, 3, 3, 3, 5, 3, 5, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 5],
     [5, 0, 0, 0, 5, 9, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5],
@@ -147,7 +149,7 @@ function setup() {
             this.y = y;
             this.direction = direction; // Direction of the bullet
             this.speed = 10; // Speed of the bullet
-            this.bulletImage = loadImage("bullet1.png"); // Loading the bullet image
+            this.bulletImage = loadImage("bullet.png"); // Loading the bullet image
         }
     
         // Updating the bullet position
