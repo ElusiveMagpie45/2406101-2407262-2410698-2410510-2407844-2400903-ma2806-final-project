@@ -75,6 +75,7 @@ function preload() {
     textures[3] = loadImage("treeLow.png")
     textures[4] = loadImage("treeTop.png")
     textures[5] = loadImage("treeTwo.png")
+    textures[6] = loadImage("mudslide.png")
 
 
     //loads player image
