@@ -334,21 +334,31 @@ function draw() {
 
 function keyPressed() {
     player.setDirection();
-        // Check arrow key presses
-        if (keyCode === LEFT_ARROW) {
-            // Create bullet moving left
+    // Check arrow key presses
+    if (keyCode === LEFT_ARROW) {
+        // Creating bullet moving left
+        if (player.hasGun) { // Check if player has gun
             bullets.push(new Bullet(player.xPos, player.yPos + playerSize / 2, "left"));
-        } else if (keyCode === RIGHT_ARROW) {
-            // Create bullet moving right
+        }
+    } else if (keyCode === RIGHT_ARROW) {
+        // Creating bullet moving right
+        if (player.hasGun) { // Check if player has gun
             bullets.push(new Bullet(player.xPos + playerSize, player.yPos + playerSize / 2, "right"));
-        } else if (keyCode === UP_ARROW) {
-            // Create bullet moving up
+        }
+    } else if (keyCode === UP_ARROW) {
+        // Creating bullet moving up
+        if (player.hasGun) { // Check if player has gun
             bullets.push(new Bullet(player.xPos + playerSize / 2, player.yPos, "up"));
-        } else if (keyCode === DOWN_ARROW) {
-            // Create bullet moving down
+        }
+    } else if (keyCode === DOWN_ARROW) {
+        // Creating bullet moving down
+        if (player.hasGun) { // Check if player has gun
             bullets.push(new Bullet(player.xPos + playerSize / 2, player.yPos + playerSize, "down"));
         }
     }
+}
+
+
 
 
 class Player {
