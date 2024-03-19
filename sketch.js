@@ -622,6 +622,7 @@ function draw() {   // START GAME
   }
 
 }
+}
 
 function mouseClicked() {
   if (MENU == 0) {
