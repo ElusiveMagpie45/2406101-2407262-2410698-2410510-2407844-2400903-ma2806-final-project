@@ -113,7 +113,8 @@ function setup() {
             this.speed = 10; // Speed of the bullet
             this.bulletImage = loadImage("bullet.png"); // Loading the bullet image
         }
-    
+
+        
         // Updating the bullet position
         update() {
             switch (this.direction) {
