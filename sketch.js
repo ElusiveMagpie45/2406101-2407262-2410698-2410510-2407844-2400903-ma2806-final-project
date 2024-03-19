@@ -549,79 +549,78 @@ class Tile {
 
 
 function draw() {   // START GAME
-  print(mouseX, mouseY)
-  background(0);
-  fill(0, 255, 0, 50);
-  rect(50, 50, 200, 75);
-  fill(255, 0, 255, 50);
-  rect(50, 200, 200, 75);
-  textSize(50)
-  fill(255);
-  text('START', 70, 106);
-  
-  textSize(26);
-  text('INSTRUCTIONS', 52, 248);
-  image(img2, 250, 0, 800, 800);
-
-  if (MENU == 1) {
-    background(0);
+      print(mouseX, mouseY)
+      background(0);
+      fill(0, 255, 0, 50);
+      rect(50, 50, 200, 75);
+      fill(255, 0, 255, 50);
+      rect(50, 200, 200, 75);
+      textSize(50)
+      fill(255);
+      text('START', 70, 106);
+      
+      textSize(26);
+      text('INSTRUCTIONS', 52, 248);
+      image(img2, 250, 0, 800, 800);
     
-    // Loop through tiles to display them
-    for (let across = 0; across < numAcross; across++) {
-        for (let down = 0; down < numDown; down++) {
-            tilemap[across][down].display(); // Display each tile
-        }
-    }
-    
-    // Update and display bullets
-    for (let i = bullets.length - 1; i >= 0; i--) {
-        bullets[i].update();
-        bullets[i].display();
-        // Remove bullets that go off-screen
-        if (bullets[i].x < 0 || bullets[i].x > width || bullets[i].y < 0 || bullets[i].y > height) {
-            bullets.splice(i, 1);
-        }
-    }
-    
-    
-    player.display();
-    player.move();
-    player.updateBatteryEffect(); //update battery
-
-    // Calculate the visibility area around the player
-    let startX = max(0, player.across - floor(spotlightRadius / tileSize));
-    let endX = min(numAcross - 1, player.across + floor(spotlightRadius / tileSize));
-    let startY = max(0, player.down - floor(spotlightRadius / tileSize));
-    let endY = min(numDown - 1, player.down + floor(spotlightRadius / tileSize));
-  
-    // A loop of tiles for everytime the draw function is used
-    for (let across = 0; across < numAcross; across++) {
-        for (let down = 0; down < numDown; down++) {
-            let currentTile = tilemap[across][down];
-            if (currentTile.item && dist(player.xPos, player.yPos, currentTile.x, currentTile.y) < tileSize) {
-                player.pickUpItem(currentTile.item);
-                currentTile.item = null; // items are removed from the map after being picked up
-                }
+      if (MENU == 1) {
+        background(0);
+        
+        // Loop through tiles to display them
+        for (let across = 0; across < numAcross; across++) {
+            for (let down = 0; down < numDown; down++) {
+                tilemap[across][down].display(); // Display each tile
             }
         }
-    if (mouseButton == RIGHT) {
-      MENU = 0
+        
+        // Update and display bullets
+        for (let i = bullets.length - 1; i >= 0; i--) {
+            bullets[i].update();
+            bullets[i].display();
+            // Remove bullets that go off-screen
+            if (bullets[i].x < 0 || bullets[i].x > width || bullets[i].y < 0 || bullets[i].y > height) {
+                bullets.splice(i, 1);
+            }
+        }
+        
+        
+        player.display();
+        player.move();
+        player.updateBatteryEffect(); //update battery
+    
+        // Calculate the visibility area around the player
+        let startX = max(0, player.across - floor(spotlightRadius / tileSize));
+        let endX = min(numAcross - 1, player.across + floor(spotlightRadius / tileSize));
+        let startY = max(0, player.down - floor(spotlightRadius / tileSize));
+        let endY = min(numDown - 1, player.down + floor(spotlightRadius / tileSize));
+      
+        // A loop of tiles for everytime the draw function is used
+        for (let across = 0; across < numAcross; across++) {
+            for (let down = 0; down < numDown; down++) {
+                let currentTile = tilemap[across][down];
+                if (currentTile.item && dist(player.xPos, player.yPos, currentTile.x, currentTile.y) < tileSize) {
+                    player.pickUpItem(currentTile.item);
+                    currentTile.item = null; // items are removed from the map after being picked up
+                    }
+                }
+            }
+        if (mouseButton == RIGHT) {
+          MENU = 0
+        }
+      if (MENU == 2) { // INSTRUCTIONS
+        background(0)
+        textSize(20)
+        text('Right Click to return to MENU', 525, 30)
+        textSize(30)
+        text('-use WASD to move the character', 50, 150)
+        text('-navigate the maze', 50, 200)
+        text('-pick up batteries to expand your view', 50, 240)
+        text('-defeat enemies', 50, 290)
+        if (mouseButton == RIGHT) {
+          MENU = 0
+        }
+      }
     }
-  if (MENU == 2) { // INSTRUCTIONS
-    background(0)
-    textSize(20)
-    text('Right Click to return to MENU', 525, 30)
-    textSize(30)
-    text('-use WASD to move the character', 50, 150)
-    text('-navigate the maze', 50, 200)
-    text('-pick up batteries to expand your view', 50, 240)
-    text('-defeat enemies', 50, 290)
-    if (mouseButton == RIGHT) {
-      MENU = 0
-    }
-  }
-
-}
 }
 
 function mouseClicked() {
