@@ -226,15 +226,6 @@ function setup() {
         }
     }
        
-        ) {
-            // Update the target tile coordinates
-            this.tx = nextTileHorizontal * this.tileSize;
-            this.ty = nextTileVertical * this.tileSize;
-            // Set the enemy to moving
-            this.isMoving = true;
-        }
-    }
-
     // Move the enemy
     move() {
         if (this.isMoving) {
