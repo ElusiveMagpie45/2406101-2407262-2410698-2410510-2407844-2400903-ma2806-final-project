@@ -605,14 +605,9 @@ function draw() {   // START GAME
             }
         }
         
-
-
-      
-    //fill(0)
-    //textSize(20)
-    //text('Right Click to return to MENU', 525, 30)
-    //if (mouseButton == RIGHT) {
-     // MENU = 0
+    if (mouseButton == RIGHT) {
+      MENU = 0
+      }
     }
   if (MENU == 2) { // INSTRUCTIONS
     background(0)
