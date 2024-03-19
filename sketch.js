@@ -96,6 +96,7 @@ function preload() {
     //loads ambient music
     music = loadSound("ambientMusic.wav")
 
+    
 }
 function setup() {
     createCanvas(1000, 1000);
