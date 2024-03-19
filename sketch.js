@@ -87,7 +87,7 @@ function preload() {
     //loads player image
     playerSprite = loadImage("survivor.png")
     gunSprite = loadImage("newBattery.png")
-    batterySprite = loadImage("gun.png") 
+    batterySprite = loadImage("gun.png")
     enemySprite = loadImage("enemySprite.gif.png")
     
     img2 = loadImage('IMG_1716.PNG');
@@ -97,6 +97,8 @@ function preload() {
 
     
 }
+let gunNum = 3;
+let batteryNum = 1;
 function setup() {
     createCanvas(1000, 1000);
 
@@ -117,7 +119,13 @@ function setup() {
 
             let item=null; //init item
             if(random() < 0.05 && textureNum == 0){
-                item = random() < 0.5 ? gunSprite : batterySprite;
+                if (random() < 0.5 && gunNum) {
+                    item = gunSprite;
+                    gunNum--;
+                } else if (batteryNum) {
+                    item = batterySprite;
+                    batteryNum--;
+                }
             }
 
             tilemap[across][down] = new Tile(textures[graphicMap[down][across]], x, y, tileSize, tileID,item);
