@@ -627,7 +627,6 @@ function mouseClicked() {
   if (MENU == 0) {
     if (mouseX < 200 && mouseX > 50) {
       if (mouseY < 125 && mouseY > 50) {
-        userStartAudio(); //starts music
         MENU = 1
       }
       if (mouseY < 275 && mouseY > 200) {
