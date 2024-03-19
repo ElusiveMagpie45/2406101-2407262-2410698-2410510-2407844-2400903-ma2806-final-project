@@ -548,7 +548,7 @@ class Tile {
 
 
 
-function draw() {
+function draw() {   // START GAME
   print(mouseX, mouseY)
   background(0);
   fill(0, 255, 0, 50);
@@ -614,7 +614,6 @@ function draw() {
     //if (mouseButton == RIGHT) {
      // MENU = 0
     }
-  } // START GAME
   if (MENU == 2) { // INSTRUCTIONS
     background(0)
     textSize(20)
