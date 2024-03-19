@@ -54,7 +54,7 @@ let tileRules = [
     [1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 1, 0, 1, 1],
     [1, 1, 0, 0, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0],
     [1, 0, 0, 1, 0, 1, 1, 1, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 1, 1],
-    [1, 0, 1, 1, 0, 0, 0, 1, 0, 1, 0, 1, 1, 1, 0, 0, 1, 0, 1, 1],
+    [1, 0, 1, 1, 0, 0, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 0, 1, 1],
     [1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1],
     [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1],
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
@@ -604,15 +604,8 @@ function draw() {   // START GAME
                 }
             }
         }
-        
-
-
-      
-    //fill(0)
-    //textSize(20)
-    //text('Right Click to return to MENU', 525, 30)
-    //if (mouseButton == RIGHT) {
-     // MENU = 0
+    if (mouseButton == RIGHT) {
+      MENU = 0
     }
   if (MENU == 2) { // INSTRUCTIONS
     background(0)
@@ -631,12 +624,10 @@ function draw() {   // START GAME
 }
 
 function mouseClicked() {
-//starts music on mouse click
-    userStartAudio();
-
   if (MENU == 0) {
     if (mouseX < 200 && mouseX > 50) {
       if (mouseY < 125 && mouseY > 50) {
+        userStartAudio(); //starts music
         MENU = 1
       }
       if (mouseY < 275 && mouseY > 200) {
