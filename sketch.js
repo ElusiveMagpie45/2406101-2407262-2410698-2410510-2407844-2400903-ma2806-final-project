@@ -628,6 +628,8 @@ function draw() {   // START GAME
     player.display();
     player.move();
     player.updateBatteryEffect(); //update battery
+    enemy.display();
+    enemy.move();
 
     // Calculate the visibility area around the player
     let startX = max(0, player.across - floor(spotlightRadius / tileSize));
