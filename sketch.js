@@ -141,7 +141,7 @@ function setup() {
 
 
 
-    class Enemy {
+class Enemy {
     constructor(sprite, startAcross, startDown, size, speed, tileSize, tileRules) {
       
         this.sprite = sprite;
