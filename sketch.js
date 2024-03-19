@@ -216,30 +216,15 @@ function setup() {
             nextTileHorizontal < numAcross &&
             nextTileVertical >= 0 &&
             nextTileVertical < numDown &&
-
-        if (tileRules[nextTileVertical][nextTileHorizontal] !=1) {
-        //if within map then moveable (using ruleMap)
-        if (typeof tileRules[nextTileVertical][nextTileHorizontal] === "object") {
-
-        //if yes, then reset dirX/Y
-        this.dirX = 0;
-        this.dirY = 0;
-        //Access the transition object stored in tileRules
-        let nextLevel = tileRules[nextTileVertical][nextTileHorizontal];
-
-        //Loads Transition Object Data
-        currentLevel = nextLevel.linkedLevel;
-        player.xPos = nextLevel.startingXPos;
-        player.yPos = nextLevel.startingYPos;
-
-        //Loads the level itself
-        loadLevel(currentLevel);
-        createTileMap();
-
-
-       //breaking out the 'If' statement
-        return;
+            tileRules[nextTileVertical][nextTileHorizontal] != 1
+        ) {
+            // Update the target tile coordinates
+            this.tx = nextTileHorizontal * this.tileSize;
+            this.ty = nextTileVertical * this.tileSize;
+            // Set the enemy to moving
+            this.isMoving = true;
         }
+    }
        
         ) {
             // Update the target tile coordinates
@@ -486,7 +471,7 @@ pickUpItem(item) {
         }
     }
  //decides what tile the player wants to move towards and if there is a collision there.
-    checkTargetTile() {
+      checkTargetTile() {
        //obtains the tile that the player is standing on
         this.across = Math.floor(this.xPos / this.tileSize);
         this.down = Math.floor(this.yPos / this.tileSize);
@@ -502,9 +487,36 @@ pickUpItem(item) {
         nextTileVertical >= 0 && //left edge
         nextTileVertical < numDown //right edge
     ) {
+
+    if (tileRules[nextTileVertical][nextTileHorizontal] !=1) {
         //if within map then moveable (using ruleMap)
-        if (tileRules[nextTileVertical][nextTileHorizontal] != 1) {
+        if (typeof tileRules[nextTileVertical][nextTileHorizontal] === "object") {
+
+        //if yes, then reset dirX/Y
+        this.dirX = 0;
+        this.dirY = 0;
+        //Access the transition object stored in tileRules
+        let nextLevel = tileRules[nextTileVertical][nextTileHorizontal];
+
+        //Loads Transition Object Data
+        currentLevel = nextLevel.linkedLevel;
+        player.xPos = nextLevel.startingXPos;
+        player.yPos = nextLevel.startingYPos;
+
+        //Loads the level itself
+        loadLevel(currentLevel);
+        createTileMap();
+
+
+
+
         
+
+       
+       //breaking out the 'If' statement
+        return;
+        }
+    
         //walkable tiles get the x and y co-ords calculated
         this.tx = nextTileHorizontal * this.tileSize;
         this.ty = nextTileVertical *this.tileSize;
