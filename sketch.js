@@ -60,6 +60,7 @@ let tileRules = [
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
 ]
 
+
 // Player Variable Initialisation
     let player;
     let playerSprite;
