@@ -12,54 +12,6 @@ let bullets = [];
 let MENU = 0
 let img2;
 
-let graphicMap = [
-    [5, 3, 3, 3, 5, 3, 5, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 5],
-    [5, 0, 0, 0, 5, 9, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5],
-    [3, 4, 4, 0, 5, 8, 5, 1, 1, 1, 4, 2, 0, 0, 0, 2, 1, 1, 1, 5],
-    [2, 3, 3, 0, 5, 6, 5, 0, 0, 0, 3, 1, 1, 1, 0, 1, 0, 0, 0, 5],
-    [0, 0, 0, 0, 5, 6, 3, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 5],
-    [4, 4, 2, 0, 5, 6, 0, 0, 3, 1, 4, 0, 4, 0, 1, 2, 0, 4, 0, 5],
-    [5, 5, 4, 0, 5, 7, 4, 0, 0, 0, 3, 0, 5, 0, 1, 1, 0, 5, 0, 5],
-    [5, 3, 5, 0, 5, 0, 5, 0, 4, 0, 2, 0, 3, 0, 1, 1, 0, 3, 1, 5],
-    [5, 0, 3, 0, 5, 0, 3, 1, 5, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 5],
-    [5, 0, 0, 0, 3, 1, 2, 0, 3, 4, 0, 0, 0, 4, 1, 4, 1, 1, 1, 5],
-    [5, 0, 2, 0, 0, 0, 0, 0, 2, 3, 0, 4, 1, 3, 0, 3, 0, 0, 0, 5],
-    [5, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 2, 4, 5],
-    [5, 0, 0, 0, 0, 2, 1, 1, 1, 0, 4, 5, 0, 4, 1, 0, 1, 1, 5, 5],
-    [5, 2, 2, 1, 1, 4, 0, 0, 0, 0, 5, 5, 1, 5, 0, 0, 2, 0, 3, 3],
-    [5, 1, 0, 0, 0, 3, 4, 4, 0, 4, 3, 3, 0, 5, 0, 0, 0, 0, 0, 0],
-    [5, 0, 0, 2, 0, 2, 3, 5, 0, 5, 0, 0, 0, 5, 0, 0, 4, 0, 4, 4],
-    [5, 0, 4, 4, 0, 0, 0, 5, 0, 5, 0, 1, 4, 5, 0, 4, 5, 0, 5, 5],
-    [5, 0, 3, 3, 1, 1, 1, 3, 0, 3, 0, 2, 3, 3, 0, 3, 3, 1, 5, 5],
-    [5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 5],
-    [5, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 5]
-]
-
-
-let tileRules = [
-    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-    [1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-    [1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1],
-    [1, 1, 1, 0, 1, 0, 1, 0, 0, 0, 1, 1, 1, 1, 0, 1, 0, 0, 0, 1],
-    [0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1],
-    [1, 1, 1, 0, 1, 0, 0, 0, 1, 1, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1],
-    [1, 1, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1],
-    [1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 1],
-    [1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1],
-    [1, 0, 0, 0, 1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1],
-    [1, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 1, 0, 1, 0, 0, 0, 1],
-    [1, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 1],
-    [1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1],
-    [1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 1, 0, 1, 1],
-    [1, 1, 0, 0, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0],
-    [1, 0, 0, 1, 0, 1, 1, 1, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 1, 1],
-    [1, 0, 1, 1, 0, 0, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 0, 1, 1],
-    [1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1],
-    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1],
-    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
-]
-
-
 // Player Variable Initialisation
     let player;
     let playerSprite;
@@ -101,6 +53,9 @@ let gunNum = 3;
 let batteryNum = 1;
 function setup() {
     createCanvas(1000, 1000);
+  
+    loadLevel(beginningObject); //sets global tileMap variables
+    createTileMap(); //creates a variable on the loaded level
 
     //plays ambient music
     music.loop();
@@ -204,7 +159,6 @@ function setup() {
         this.speed = speed;
 
   
-        this.tileRules = tileRules;
         this.tileSize = tileSize;
 
      
@@ -262,7 +216,31 @@ function setup() {
             nextTileHorizontal < numAcross &&
             nextTileVertical >= 0 &&
             nextTileVertical < numDown &&
-            this.tileRules[nextTileVertical][nextTileHorizontal] != 1
+
+        if (tileRules[nextTileVertical][nextTileHorizontal] !=1) {
+        //if within map then moveable (using ruleMap)
+        if (typeof tileRules[nextTileVertical][nextTileHorizontal] === "object") {
+
+        //if yes, then reset dirX/Y
+        this.dirX = 0;
+        this.dirY = 0;
+        //Access the transition object stored in tileRules
+        let nextLevel = tileRules[nextTileVertical][nextTileHorizontal];
+
+        //Loads Transition Object Data
+        currentLevel = nextLevel.linkedLevel;
+        player.xPos = nextLevel.startingXPos;
+        player.yPos = nextLevel.startingYPos;
+
+        //Loads the level itself
+        loadLevel(currentLevel);
+        createTileMap();
+
+
+       //breaking out the 'If' statement
+        return;
+        }
+       
         ) {
             // Update the target tile coordinates
             this.tx = nextTileHorizontal * this.tileSize;
@@ -292,7 +270,60 @@ function setup() {
         image(this.sprite, this.xPos, this.yPos, this.size, this.size);
     }
 }
-    
+
+function createTileMap() {
+    tilemap = [];
+
+    let tileID = 0; //sets tileID for the first tile
+
+//Creates rest of tiles
+for(let across = 0; across < numAcross; across++) {
+    tilemap[across] = [];
+    for(let down = 0; down < numDown; down++) {
+        let textureNum = graphicMap [down][across];
+
+        tilemap[across][down] = new Tile (textures[textureNum], across, down, tileSize, tileID); // Creates new tile
+
+        tileID++;
+    }
+}
+
+    addTransitionsToTiles(); //gives transitions to certain tiles
+
+}
+
+function addTransitionsToTiles() {
+    if (currentLevel === beginningObject) {
+        currentLevel.tileRules [14][19] = transitionBeginningToMiddle;
+        //                     [Y] [X]
+        
+        // chooses which tile is used as the transition tile
+    }
+   
+    if (currentLevel === middleObject) {
+        
+        currentLevel.tileRules [1][19] = transitionMiddleToBeginning;
+        currentLevel.tileRules [18][17] = transitionMiddleToFinal;
+    }
+
+    if (currentLevel === finalObject) {
+        currentLevel.tileRules [1][17] = transitionFinalToMiddle;
+    }
+}
+
+
+
+
+function loadLevel(levelToLoad) {
+    currentLevel = levelToLoad; //set curent level as the level that is loading
+    tilemap = []; //a clean tile map
+
+    //level variables
+    numAcross = levelToLoad.numAcross;
+    numDown = levelToLoad.numDown;
+    graphicMap = levelToLoad.graphicMap;
+    tileRules = levelToLoad.tileRules;
+}
 
 
 function keyPressed() {
@@ -350,7 +381,6 @@ class Player {
         this.speed = speed;
 
         //rules regarding movement/collision
-        this.tileRules = tileRules;
         this.tileSize = tileSize;
 
         //properties of player movement + direction of movement
@@ -473,7 +503,7 @@ pickUpItem(item) {
         nextTileVertical < numDown //right edge
     ) {
         //if within map then moveable (using ruleMap)
-        if (this.tileRules[nextTileVertical][nextTileHorizontal] != 1) {
+        if (tileRules[nextTileVertical][nextTileHorizontal] != 1) {
         
         //walkable tiles get the x and y co-ords calculated
         this.tx = nextTileHorizontal * this.tileSize;
