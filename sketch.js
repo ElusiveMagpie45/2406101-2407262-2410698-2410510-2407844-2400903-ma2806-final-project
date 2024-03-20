@@ -51,6 +51,7 @@ function preload() {
 }
 let gunNum = 3;
 let batteryNum = 1;
+
 function setup() {
     createCanvas(1000, 1000);
   
@@ -101,151 +102,99 @@ function setup() {
     }
 }
 
+function draw() {   // START GAME
+  print(mouseX, mouseY)
+  background(0);
+  fill(0, 255, 0, 50);
+  rect(50, 50, 200, 75);
+  fill(255, 0, 255, 50);
+  rect(50, 200, 200, 75);
+  textSize(50)
+  fill(255);
+  text('START', 70, 106);
+  
+  textSize(26);
+  text('INSTRUCTIONS', 52, 248);
+  image(img2, 250, 0, 800, 800);
 
+  if (MENU == 1) {
+    background(0);
+    
+    // Loop through tiles to display them
+    for (let across = 0; across < numAcross; across++) {
+        for (let down = 0; down < numDown; down++) {
+            tilemap[across][down].display(); // Display each tile
+        }
+    }
+    
+    // Update and display bullets
+    for (let i = bullets.length - 1; i >= 0; i--) {
+        bullets[i].update();
+        bullets[i].display();
+        // Remove bullets that go off-screen
+        if (bullets[i].x < 0 || bullets[i].x > width || bullets[i].y < 0 || bullets[i].y > height) {
+            bullets.splice(i, 1);
+        }
+    }
+    
+    
+    player.display();
+    player.move();
+    player.updateBatteryEffect(); //update battery
+
+    for (let enemyCount = 0; enemyCount < numEnemies; enemyCount++) {
+        enemies[enemyCount].display();      
+
+    // Calculate the visibility area around the player
+    let startX = max(0, player.across - floor(spotlightRadius / tileSize));
+    let endX = min(numAcross - 1, player.across + floor(spotlightRadius / tileSize));
+    let startY = max(0, player.down - floor(spotlightRadius / tileSize));
+    let endY = min(numDown - 1, player.down + floor(spotlightRadius / tileSize));
+  
+    // A loop of tiles for everytime the draw function is used
+    for (let across = 0; across < numAcross; across++) {
+        for (let down = 0; down < numDown; down++) {
+            let currentTile = tilemap[across][down];
+            if (currentTile.item && dist(player.xPos, player.yPos, currentTile.x, currentTile.y) < tileSize) {
+                player.pickUpItem(currentTile.item);
+                currentTile.item = null; // items are removed from the map after being picked up
+                }
+            }
+        }
+        
+    if (mouseButton == RIGHT) {
+      MENU = 0
+      }
+    }
+  if (MENU == 2) { // INSTRUCTIONS
+    background(0)
+    textSize(20)
+    text('Right Click to return to MENU', 525, 30)
+    textSize(30)
+    text('-use WASD to move the character', 50, 150)
+    text('-navigate the maze', 50, 200)
+    text('-pick up batteries to expand your view', 50, 240)
+    text('-defeat enemies', 50, 290)
+    if (mouseButton == RIGHT) {
+      MENU = 0
+    }
+  }
+
+function mouseClicked() {
+  if (MENU == 0) {
+    if (mouseX < 200 && mouseX > 50) {
+      if (mouseY < 125 && mouseY > 50) {
+        MENU = 1
+          userStartAudio(); //starts music on mouse click
+      }
+      if (mouseY < 275 && mouseY > 200) {
+        MENU = 2
+
+
+      
     //console.log(tilemap[4][6].tileID)
     //console.log(tilemap[4][6].x / tileSize);
 
-    class Bullet {
-        constructor(x, y, direction) {
-            this.x = x;
-            this.y = y;
-            this.direction = direction; // Direction of the bullet
-            this.speed = 10; // Speed of the bullet
-            this.bulletImage = loadImage("bullet.png"); // Loading the bullet image
-        }
-
-        
-        // Updating the bullet position
-        update() {
-            switch (this.direction) {
-                case "left":
-                    this.x -= this.speed;
-                    break;
-                case "right":
-                    this.x += this.speed;
-                    break;
-                case "up":
-                    this.y -= this.speed;
-                    break;
-                case "down":
-                    this.y += this.speed;
-                    break;
-            }
-        }
-    
-        
-        display() {
-            image(this.bulletImage, this.x, this.y);
-        }
-    }
-
-
-
-class Enemy {
-    constructor(sprite, startAcross, startDown, size, speed, tileSize, tileRules) {
-      
-        this.sprite = sprite;
-
-     
-        this.across = startAcross;
-        this.down = startDown;
-
-     
-        this.xPos = this.across * tileSize;
-        this.yPos = this.down * tileSize;
-
-      
-        this.size = size;
-        this.speed = speed;
-
-  
-        this.tileSize = tileSize;
-
-     
-        this.dirX = 0;
-        this.dirY = 0;
-
- 
-        this.isMoving = false;
-
-        this.tx = this.xPos;
-        this.ty = this.yPos;
-    }
-
-    // Set direction of the enemy
-    setDirection() {
-        if (!this.isMoving) {
-            // Randomize movement direction
-            let direction = floor(random(4));
-            switch (direction) {
-                case 0: // UP
-                    this.dirX = 0;
-                    this.dirY = -1;
-                    break;
-                case 1: // DOWN
-                    this.dirX = 0;
-                    this.dirY = 1;
-                    break;
-                case 2: // LEFT
-                    this.dirX = -1;
-                    this.dirY = 0;
-                    break;
-                case 3: // RIGHT
-                    this.dirX = 1;
-                    this.dirY = 0;
-                    break;
-            }
-            // Check the target tile
-            this.checkTargetTile();
-        }
-    }
-
-    // Check target tile for the enemy
-    checkTargetTile() {
-        // Obtain the tile that the enemy is standing on
-        this.across = Math.floor(this.xPos / this.tileSize);
-        this.down = Math.floor(this.yPos / this.tileSize);
-
-        // Calculate the coordinates of the desired tile
-        let nextTileHorizontal = this.across + this.dirX;
-        let nextTileVertical = this.down + this.dirY;
-
-        // Check if the next tile is within the map and if it's a walkable tile
-        if (
-            nextTileHorizontal >= 0 &&
-            nextTileHorizontal < numAcross &&
-            nextTileVertical >= 0 &&
-            nextTileVertical < numDown &&
-            tileRules[nextTileVertical][nextTileHorizontal] != 1
-        ) {
-            // Update the target tile coordinates
-            this.tx = nextTileHorizontal * this.tileSize;
-            this.ty = nextTileVertical * this.tileSize;
-            // Set the enemy to moving
-            this.isMoving = true;
-        }
-    }
-       
-    // Move the enemy
-    move() {
-        if (this.isMoving) {
-            this.xPos += this.speed * this.dirX;
-            this.yPos += this.speed * this.dirY;
-
-            if (this.xPos === this.tx && this.yPos === this.ty) {
-                this.isMoving = false;
-                this.dirX = 0;
-                this.dirY = 0;
-            }
-        }
-    }
-
-    // Display the enemy
-    display() {
-        imageMode(CORNER);
-        image(this.sprite, this.xPos, this.yPos, this.size, this.size);
-    }
-}
 
 function createTileMap() {
     tilemap = [];
@@ -328,8 +277,45 @@ function keyPressed() {
     }
 }
 
+//BULLET CLASS CREATION
+
+    class Bullet {
+        constructor(x, y, direction) {
+            this.x = x;
+            this.y = y;
+            this.direction = direction; // Direction of the bullet
+            this.speed = 10; // Speed of the bullet
+            this.bulletImage = loadImage("bullet.png"); // Loading the bullet image
+        }
+
+        
+        // Updating the bullet position
+        update() {
+            switch (this.direction) {
+                case "left":
+                    this.x -= this.speed;
+                    break;
+                case "right":
+                    this.x += this.speed;
+                    break;
+                case "up":
+                    this.y -= this.speed;
+                    break;
+                case "down":
+                    this.y += this.speed;
+                    break;
+            }
+        }
+    
+        
+        display() {
+            image(this.bulletImage, this.x, this.y);
+        }
+    }
 
 
+          
+//PLAYER CLASS CREATION
 
 class Player {
     constructor(sprite, startAcross, startDown, size, speed, tileSize, tileRules,gunSprite,batterySprite) {
@@ -374,6 +360,7 @@ class Player {
         this.originalSpotlightRadius = spotlightRadius;
         this.spotlightExpanding = false;
 
+//BATTERY MECHANICS
     } 
 pickUpItem(item) {
     if (item === this.batterySprite) {
@@ -540,6 +527,114 @@ display() {
 let spotlightRadius = 150; // how big the radius of the spotlight is
 
 
+//ENEMY CLASS CREATION
+class Enemy {
+    constructor(sprite, startAcross, startDown, size, speed, tileSize, tileRules) {
+      
+        this.sprite = sprite;
+
+     
+        this.across = startAcross;
+        this.down = startDown;
+
+     
+        this.xPos = this.across * tileSize;
+        this.yPos = this.down * tileSize;
+
+      
+        this.size = size;
+        this.speed = speed;
+
+  
+        this.tileSize = tileSize;
+
+     
+        this.dirX = 0;
+        this.dirY = 0;
+
+ 
+        this.isMoving = false;
+
+        this.tx = this.xPos;
+        this.ty = this.yPos;
+    }
+
+    // Set direction of the enemy
+    setDirection() {
+        if (!this.isMoving) {
+            // Randomize movement direction
+            let direction = floor(random(4));
+            switch (direction) {
+                case 0: // UP
+                    this.dirX = 0;
+                    this.dirY = -1;
+                    break;
+                case 1: // DOWN
+                    this.dirX = 0;
+                    this.dirY = 1;
+                    break;
+                case 2: // LEFT
+                    this.dirX = -1;
+                    this.dirY = 0;
+                    break;
+                case 3: // RIGHT
+                    this.dirX = 1;
+                    this.dirY = 0;
+                    break;
+            }
+            // Check the target tile
+            this.checkTargetTile();
+        }
+    }
+
+    // Check target tile for the enemy
+    checkTargetTile() {
+        // Obtain the tile that the enemy is standing on
+        this.across = Math.floor(this.xPos / this.tileSize);
+        this.down = Math.floor(this.yPos / this.tileSize);
+
+        // Calculate the coordinates of the desired tile
+        let nextTileHorizontal = this.across + this.dirX;
+        let nextTileVertical = this.down + this.dirY;
+
+        // Check if the next tile is within the map and if it's a walkable tile
+        if (
+            nextTileHorizontal >= 0 &&
+            nextTileHorizontal < numAcross &&
+            nextTileVertical >= 0 &&
+            nextTileVertical < numDown &&
+            tileRules[nextTileVertical][nextTileHorizontal] != 1
+        ) {
+            // Update the target tile coordinates
+            this.tx = nextTileHorizontal * this.tileSize;
+            this.ty = nextTileVertical * this.tileSize;
+            // Set the enemy to moving
+            this.isMoving = true;
+        }
+    }
+       
+    // Move the enemy
+    move() {
+        if (this.isMoving) {
+            this.xPos += this.speed * this.dirX;
+            this.yPos += this.speed * this.dirY;
+
+            if (this.xPos === this.tx && this.yPos === this.ty) {
+                this.isMoving = false;
+                this.dirX = 0;
+                this.dirY = 0;
+            }
+        }
+    }
+
+    // Display the enemy
+    display() {
+        imageMode(CORNER);
+        image(this.sprite, this.xPos, this.yPos, this.size, this.size);
+    }
+}
+
+//TILE CLASS CREATION
 class Tile {
     constructor(texture, x, y, tileSize, tileID,item=null) {
         this.texture = texture;
@@ -584,100 +679,9 @@ class Tile {
     }
 }
 
-
-
-
-
-
-function draw() {   // START GAME
-  print(mouseX, mouseY)
-  background(0);
-  fill(0, 255, 0, 50);
-  rect(50, 50, 200, 75);
-  fill(255, 0, 255, 50);
-  rect(50, 200, 200, 75);
-  textSize(50)
-  fill(255);
-  text('START', 70, 106);
-  
-  textSize(26);
-  text('INSTRUCTIONS', 52, 248);
-  image(img2, 250, 0, 800, 800);
-
-  if (MENU == 1) {
-    background(0);
-    
-    // Loop through tiles to display them
-    for (let across = 0; across < numAcross; across++) {
-        for (let down = 0; down < numDown; down++) {
-            tilemap[across][down].display(); // Display each tile
-        }
-    }
-    
-    // Update and display bullets
-    for (let i = bullets.length - 1; i >= 0; i--) {
-        bullets[i].update();
-        bullets[i].display();
-        // Remove bullets that go off-screen
-        if (bullets[i].x < 0 || bullets[i].x > width || bullets[i].y < 0 || bullets[i].y > height) {
-            bullets.splice(i, 1);
-        }
-    }
-    
-    
-    player.display();
-    player.move();
-    player.updateBatteryEffect(); //update battery
-
-    for (let enemyCount = 0; enemyCount < numEnemies; enemyCount++) {
-        enemies[enemyCount].display();      
-
-    // Calculate the visibility area around the player
-    let startX = max(0, player.across - floor(spotlightRadius / tileSize));
-    let endX = min(numAcross - 1, player.across + floor(spotlightRadius / tileSize));
-    let startY = max(0, player.down - floor(spotlightRadius / tileSize));
-    let endY = min(numDown - 1, player.down + floor(spotlightRadius / tileSize));
-  
-    // A loop of tiles for everytime the draw function is used
-    for (let across = 0; across < numAcross; across++) {
-        for (let down = 0; down < numDown; down++) {
-            let currentTile = tilemap[across][down];
-            if (currentTile.item && dist(player.xPos, player.yPos, currentTile.x, currentTile.y) < tileSize) {
-                player.pickUpItem(currentTile.item);
-                currentTile.item = null; // items are removed from the map after being picked up
-                }
-            }
-        }
-        
-    if (mouseButton == RIGHT) {
-      MENU = 0
-      }
-    }
-  if (MENU == 2) { // INSTRUCTIONS
-    background(0)
-    textSize(20)
-    text('Right Click to return to MENU', 525, 30)
-    textSize(30)
-    text('-use WASD to move the character', 50, 150)
-    text('-navigate the maze', 50, 200)
-    text('-pick up batteries to expand your view', 50, 240)
-    text('-defeat enemies', 50, 290)
-    if (mouseButton == RIGHT) {
-      MENU = 0
-    }
-  }
-
 }
 
-function mouseClicked() {
-  if (MENU == 0) {
-    if (mouseX < 200 && mouseX > 50) {
-      if (mouseY < 125 && mouseY > 50) {
-        MENU = 1
-          userStartAudio(); //starts music on mouse click
-      }
-      if (mouseY < 275 && mouseY > 200) {
-        MENU = 2
+
       }
     }
   }
