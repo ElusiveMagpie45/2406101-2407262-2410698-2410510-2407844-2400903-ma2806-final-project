@@ -584,11 +584,6 @@ class Tile {
     }
 }
 
-
-
-
-
-
 function draw() {   // START GAME
   print(mouseX, mouseY)
   background(0);
@@ -628,7 +623,9 @@ function draw() {   // START GAME
     player.display();
     player.move();
     player.updateBatteryEffect(); //update battery
-  
+
+     
+
     // Calculate the visibility area around the player
     let startX = max(0, player.across - floor(spotlightRadius / tileSize));
     let endX = min(numAcross - 1, player.across + floor(spotlightRadius / tileSize));
@@ -676,6 +673,8 @@ function mouseClicked() {
       if (mouseY < 275 && mouseY > 200) {
         MENU = 2
       }
+    } 
     }
-  }
-}
+    }
+
+
