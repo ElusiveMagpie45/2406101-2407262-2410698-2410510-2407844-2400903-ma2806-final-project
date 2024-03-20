@@ -1,7 +1,7 @@
 Traversing Shadows
 
 BY A-maze-ing Crew
-MEMBERS: AJ Heffernan (2406101), Ollie Chlopek (2407262), Huseyin Hassan (2410698), Cherry CHE (2410510), Amelia Baxter (2407844), Bani Kaur (2400903)
+MEMBERS: AJ Heffernan (2406101), Ollie Chlopek (2407262), Huseyin Hassan (2410698), Xun CHE (2410510), Amelia Baxter (2407844), Bani Kaur (2400903)
 
 OVERVIEW OF GAME
 
@@ -16,7 +16,7 @@ Ollie - I have reorganised and fixed the tile map code to work on a larger scale
 
 Huseyin - I have implemented the code for the torch mechanic, lighting the area surrounding the player, using inspiration from a tutorial I found online for guidance. I have also made it so that the powerups are not visible without being in the spotlight, remaining hidden in the darkness if not in the lit area around the player. I made it so that when you pick up the battery the whole map is visible for 5 seconds before reverting back to the torch. I have also coded the gun and bullet mechanic.
 
-Cherry - I have coded the items that can be picked up, the guns and batteries, using inspiration I found online for the code, as well as inputting their positions to be randomized across the map, though not on inaccessible tiles, and designing their appearance. I also made sure a limited amount of batteries and guns are available.
+Xun - I have coded the items that can be picked up, the guns and batteries, using inspiration I found online for the code, as well as inputting their positions to be randomized across the map, though not on inaccessible tiles, and designing their appearance. I also made sure a limited amount of batteries and guns are available.
 
 Amelia - I have found our aesthetic inspiration through a Pinterest board of images and have drawn and helped implement the sprites and texture design for the player and environment, using a pixel art aesthetic throughout the designs as an art style that serves as a thematic facade. I am also working on the code for a start menu, that shows instructions and gives a basic backstory of the game. this is currently commented out as when writing the code, the index for the project wouldn't load and i therefore couldn't see the effects of the new code, making it difficult to immplement.
 
