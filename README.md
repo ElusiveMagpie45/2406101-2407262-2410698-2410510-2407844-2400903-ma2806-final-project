@@ -20,7 +20,7 @@ Cherry - I have coded the items that can be picked up, the guns and batteries, u
 
 Amelia - I have found our aesthetic inspiration through a Pinterest board of images and have drawn and helped implement the sprites and texture design for the player and environment, using a pixel art aesthetic throughout the designs as an art style that serves as a thematic facade. I am also working on the code for a start menu, that shows instructions and gives a basic backstory of the game. this is currently commented out as when writing the code, the index for the project wouldn't load and i therefore couldn't see the effects of the new code, making it difficult to immplement.
 
-Bani - I helped with the narrative development and theme of the game, and I have implemented the code for the enemies, possibly making use of code from prior lectures, i am struggling to display the enemy right now, I am going to figure this out soon and add more enemies such as wolves and bear. I also need to add a gun mechanic where a bullet shot will cause the enemy to dissappear. 
+Bani - I helped with the narrative development and theme of the game, and I have implemented the code for the enemies, possibly making use of code from prior lectures, i am struggling to display the enemy right now, I am going to figure this out soon and add more enemies such as wolves and bear.
 
 THEMES
 
