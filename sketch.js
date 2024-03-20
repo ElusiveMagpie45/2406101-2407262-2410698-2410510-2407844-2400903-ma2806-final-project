@@ -656,7 +656,7 @@ function draw() {   // START GAME
     text('- Navigate the maze', 50, 200)
     text('- Pick up batteries to expand your view', 50, 240)
     text('- Pick up a gun and use the arrow keys to defend yourself', 50, 290)
-    text('- Right click to return to the menu at any time', 50, 290)
+    text('- Right click to return to the menu at any time', 50, 340)
     if (mouseButton == RIGHT) {
       MENU = 0
     }
