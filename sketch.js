@@ -655,7 +655,7 @@ function draw() {   // START GAME
     text('-use WASD to move the character', 50, 150)
     text('-navigate the maze', 50, 200)
     text('-pick up batteries to expand your view', 50, 240)
-    text('-defeat enemies', 50, 290)
+    text('-pick up a gun and use the arrow keys to shoot to defeat enemies ', 50, 290)
     if (mouseButton == RIGHT) {
       MENU = 0
     }
