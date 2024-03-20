@@ -629,7 +629,7 @@ function draw() {   // START GAME
     player.move();
     player.updateBatteryEffect(); //update battery
 
-    for (let enemyCount = 0; enemyCount < numEnemiess; enemyCount++) {
+    for (let enemyCount = 0; enemyCount < numEnemies; enemyCount++) {
         enemies[enemyCount].display();      
 
     // Calculate the visibility area around the player
