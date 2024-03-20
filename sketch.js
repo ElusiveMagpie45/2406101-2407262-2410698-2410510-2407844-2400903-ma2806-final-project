@@ -650,12 +650,13 @@ function draw() {   // START GAME
   if (MENU == 2) { // INSTRUCTIONS
     background(0)
     textSize(20)
-    text('Right Click to return to MENU', 525, 30)
+    text('Right Click to Return to MENU', 525, 30)
     textSize(30)
-    text('-use WASD to move the character', 50, 150)
-    text('-navigate the maze', 50, 200)
-    text('-pick up batteries to expand your view', 50, 240)
-    text('-pick up a gun and use the arrow keys to shoot to defeat enemies ', 50, 290)
+    text('- Use WASD to move the character', 50, 150)
+    text('- Navigate the maze', 50, 200)
+    text('- Pick up batteries to expand your view', 50, 240)
+    text('- Pick up a gun and use the arrow keys to defend yourself', 50, 290)
+    text('- Right click to return to the menu at any time', 50, 290)
     if (mouseButton == RIGHT) {
       MENU = 0
     }
